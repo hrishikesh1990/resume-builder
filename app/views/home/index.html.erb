@@ -1,0 +1,12 @@
+<%= render 'shared/header' %>
+
+<main class="py-10 max-w-7xl mx-auto px-4 sm:px-8">
+    <div class="flex justify-between align-center">
+        <h1 class="text-3xl"> 
+            Welcome, <span class="text-purple-600 font-semibold"><%= @user.name %><span>
+        </h1>
+        <%= render 'shared/input/buttons/secondary', color: "purple", label: "Edit", href: edit_url %>
+    </div>
+    
+    <%= render 'shared/profile/preview', profile: @user.profile %>
+</main>

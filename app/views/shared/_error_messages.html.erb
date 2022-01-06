@@ -1,0 +1,5 @@
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+        <%= render 'shared/alert', type: :danger, message: msg %>
+    <% end %>
+<% end %>

@@ -1,0 +1,24 @@
+<div>
+    <nav class="bg-white dark:bg-gray-800  shadow ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="w-full justify-between flex items-center">
+                    <a class="flex-shrink-0" href="/">
+                        <h1 class="text-2xl sm:text-3xl font-black"><span class="text-purple-600">My</span>Resume</h1>
+                    </a>
+                    <% if logged_in? %>
+                        <div class="md:block">
+                            <div class="ml-10 flex items-baseline space-x-4">
+                                <%= render 'shared/input/buttons/primary', 
+                                    color: "purple", 
+                                    label: "Log out", 
+                                    href: logout_path, 
+                                    method: "delete" %>
+                            </div>
+                        </div>
+                    <% end %>    
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

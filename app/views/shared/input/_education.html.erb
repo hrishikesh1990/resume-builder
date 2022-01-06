@@ -1,0 +1,8 @@
+<%= render 'shared/edit_sub_section' do %>
+    <%= education.text_field :school, value: education.object.school, placeholder: "School" %><br/>
+    <%= education.text_field :degree, value: education.object.degree, placeholder: "Degree" %><br/>
+    <%= education.date_field :start, value: education.object.start, placeholder: "Start date" %><br/>
+    <%= education.date_field :end, value: education.object.end, placeholder: "End date" %><br/>
+    <%= education.text_area :description, value: education.object.description, placeholder: "Description" %><br/>
+    <%= render 'shared/input/buttons/delete', type: education %>
+<% end %>

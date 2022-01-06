@@ -1,0 +1,1 @@
+CREATE USER resume_builder SUPERUSER;
