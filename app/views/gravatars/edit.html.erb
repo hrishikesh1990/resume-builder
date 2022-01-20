@@ -1,0 +1,11 @@
+<%= render 'shared/title', title: "Profile Image" %>
+<div class="row">
+  <div class="medium-2 columns">
+    <%= render @user.gravatar, res_obj: @user.resume %>
+  </div>
+  <div class="medium-10 columns">
+    <p style="margin-top: 1rem;">You can choose whether to use your gravatar based on your email address.  Find out how to get your gravatar at <%= link_to "gravatar.com", 'http://gravatar.com' %>.  You can also choose not to display an image on your resume or enter a custom url for your image.</p>
+  </div>
+</div>
+<%= render 'form' %>
+<%= link_to "<i class=\"fi-arrow-left\"></i> Back".html_safe, edit_resume_path(@user.resume), title: "Back to Dashboard" %>

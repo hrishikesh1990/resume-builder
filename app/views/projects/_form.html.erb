@@ -1,0 +1,14 @@
+<%= render 'shared/errors', obj: @project %>
+<%= form_for [@resume, @job, @project] do |f| %>
+  <fieldset>
+    <legend><%= create_or_update(@project) %></legend>
+    <p>Use this form to add a name and description for a project that you worked on related to this particular job.</p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 5 %>
+    <%= f.submit create_or_update(@project), class: 'button small radius' %>
+  </fieldset>
+<% end %>

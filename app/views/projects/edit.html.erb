@@ -1,0 +1,9 @@
+<%= render 'shared/title', title: "Edit Project" %>
+<div class="row">
+  <div class="medium-4 columns">
+    <%= render 'form' %>
+    <% unless @project.new_record? %>
+      <%= link_to "<i class=\"fi-arrow-left\"></i> Back".html_safe, edit_resume_experience_path(@resume, @job), title: "Back to Experience" %>
+    <% end %>
+  </div>
+</div>

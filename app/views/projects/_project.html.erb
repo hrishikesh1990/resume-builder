@@ -1,0 +1,6 @@
+<p>
+  <%= link_to "<i class=\"fi-pencil right\"></i>".html_safe, edit_resume_experience_project_path(@resume, @job, project), title: 'Edit', remote: true %>
+  <%= link_to "<i class=\"fi-trash right\"></i>".html_safe, [@resume, @job, project], method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete', class: 'warning' %>
+  <strong><%= project.name %></strong>  - <%= project.description %>
+</p>
+<hr />

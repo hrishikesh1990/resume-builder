@@ -1,0 +1,8 @@
+<% grav_class = ((current_page? resumes_path) || (current_page? root_path)) ? 'gravatar index left' : 'gravatar left' %>
+<% if res_obj.user.gravatar.show_image %>
+  <% if res_obj.user.gravatar.use_custom_url %>
+    <%= image_tag res_obj.user.gravatar.custom_image_url, class: grav_class %>
+  <% else %>
+    <%= image_tag res_obj.user.gravatar_url(size: '150'), class: grav_class %>
+  <% end %>
+<% end %>
