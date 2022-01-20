@@ -1,0 +1,121 @@
+<div class="row">
+  <div class="medium-2 columns">
+      <%= render @resume.user.gravatar, res_obj: @resume %>
+  </div>
+  <div class="medium-10 columns">
+      <h1><%= "#{@resume.user.first_name} #{@resume.user.last_name}" %></h1>
+      <ul class="no-bullet">
+      <li><%= @resume.user.phone %></li>
+      <li><%= @resume.user.email %></li>
+      <li><%= @resume.user.address %></li>
+      <li><%= @resume.user.city + ", " + @resume.user.state + " " + @resume.user.zip_code %></li>
+      </ul>
+  </div>
+</div>
+<hr />
+
+<div class="row">
+  <div id="sections" class="medium-8 columns medium-centered">
+    <% if @resume.objective %>
+        <section id="objective" class="current">
+          <h3>Objective</h3>
+          <hr />
+          <p><%= @resume.objective.description %></p>
+        </section>
+    <% end %>
+    <% if @skills.any? %>
+        <section id="skills">
+          <h3>Skills</h3>
+          <hr />
+          <% @skills.each do |skill| %>
+            <p><strong><%= skill.title %> - </strong><%= skill.description %></p>
+          <% end %>
+        </section>
+    <% end %>
+    
+    <% if @schools.any? %>
+        <section id="schools">
+          <h3>Education</h3>
+          <hr />
+          <% @schools.each do |school| %>
+            <h3><%= school.name %> <small>Graduated in <%= school.year_graduated %></small></h3>
+            <h5 class="subheader"><%= school.degree %></h5>
+          <% end %>
+        </section>
+    <% end %>
+    
+    <% if @jobs.any? %>
+        <section id="jobs">
+          <h3>Work Experience</h3>
+          <hr />
+          <% @jobs.each do |job| %>
+            <h3><%= job.job_title %> <small><%= job.start_date %> - <%= job.end_date %></small></h3>
+            <h5 class="subheader"><%= job.company %>, <%= job.city %>, <%= job.state %> <%= job.phone %></h5>
+            <% if job.url %>
+              <h5><%= link_to job.url, fix_url(job.url) %></h5>
+            <% end %>
+            <p><%= job.responsibilities %></p>
+            <% if job.projects.any? %>
+            <h5>Projects</h5>
+            <ul>
+            <% job.projects.each do |project| %>
+              <li>
+                <strong><%= project.name %></strong> - 
+                <% if project.url %>
+                  <%= link_to project.url, fix_url(project.url) %> - 
+                <% end %>
+                <%= project.description %>
+              </li>
+            <% end %>
+            </ul>
+            <% end %>
+          <% end %>
+        </section>
+    <% end %>
+    <% if @hobbies.any? %>
+        <section id="hobbies">
+          <h3>Hobbies</h3>
+          <hr />
+          <% @hobbies.each do |hobby| %>
+            <p><strong><%= hobby.title %></strong> - <%= hobby.description %></p>
+          <% end %>
+        </section>
+    <% end %>
+    <% if @references.any? %>
+        <section id="references">
+          <h3>References</h3>
+          <hr />
+          <% @references.each do |reference| %>
+            <p>
+            <strong><%= reference.name %></strong> - <%= reference.relationship %><br/>
+            <ul class="no-bullet">
+              <li><%= reference.company %></li>
+              <li><%= reference.phone %></li>
+              <li><%= reference.email %></li>
+            </ul>
+            </p>
+          <% end %>
+      
+        </section>
+    <% end %>
+    
+    <% @customs.each do |custom| %>
+      <section id="custom-<%= custom.id %>">
+        <h3><%= custom.title %></h3>
+        <hr />
+        <p>
+          <%= custom.description %>
+        </p>
+
+      </section>
+    <% end %>
+    <% @snippets.each do |snippet| %>
+      <section id="snippet-<%= snippet.id %>">
+        <h3><%= snippet.title %></h3>
+        <hr />
+        <p><%= snippet.description %></p>
+        <pre><code <%= snippet_lang(snippet).html_safe %>><%= snippet.code %></code></pre>
+      </section>
+    <% end %>
+  </div>
+</div>

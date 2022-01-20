@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="small-2 columns">
+    <%= render resume.user.gravatar, res_obj: resume %>
+  </div>
+  <div class="small-10 columns">
+    <blockquote><h3><%= link_to "#{resume.user.first_name} #{resume.user.last_name}", resume_path(resume) %></h3>
+      <% if resume.objective %>
+        <p><strong> Objective</strong> - <%= resume.objective.description %></p>
+      <% end %></blockquote>
+  </div>
+</div>

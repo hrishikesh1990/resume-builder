@@ -1,0 +1,71 @@
+<%= render 'shared/title', title: "Build your Resume" %>
+<%= render 'layouts/messages' %>
+<div class="row">
+  <div class="medium-6 columns">
+    <h3 class="subheader">Welcome, <%= current_user.first_name %></h3>
+    <hr />
+    <p>Building your resume is easy.  Use the panels below to add items to your resume.  Use the text area to enter an objective.  An objective is a great way to describe your career and life goals.</p>
+    <%= link_to "<i class=\"fi-pencil\"></i> Edit Profile".html_safe, edit_user_path(current_user), class: 'small button radius' %>
+    <%= link_to "<i class=\"fi-eye\"></i> View Resume".html_safe, resume_path(@resume), class: 'small button radius' %>
+  </div>
+  <div class="medium-6 columns">
+    <h3>Objective</h3>
+    <hr />
+    <% if @resume.objective %>
+      <p><%= @resume.objective.description %></p>
+      <%= link_to "<i class=\"fi-pencil\"></i> Edit Objective".html_safe, edit_resume_objective_path(@resume,@resume.objective), class: 'button small radius', remote: true %>
+    <% else %>
+      <%= render 'objectives/form' %>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="row" data-equalizer>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <%= render 'shared/resume_panel', objs: @skills, title: "Skills" %>
+      <%= link_to "<i class=\"fi-plus\"></i>Add Skill".html_safe, new_resume_skill_path(@resume), class: 'button small radius', remote: true %>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <%= render 'shared/resume_panel', objs: @schools, title: "Education" %>
+      <%= link_to "<i class=\"fi-plus\"></i>Add School".html_safe, new_resume_school_path(@resume), class: 'button small radius', remote: true %>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <%= render 'shared/resume_panel', objs: @jobs, title: "Work Experience" %>
+      <%= link_to "<i class=\"fi-plus\"></i>Add Job".html_safe, new_resume_experience_path(@resume), class: 'button small radius' %>
+    </div>
+  </div>
+</div>
+<div class="row" data-equalizer>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <%= render 'shared/resume_panel', objs: @hobbies, title: "Hobbies" %>
+      <%= link_to "<i class=\"fi-plus\"></i>Add Hobby".html_safe, new_resume_hobby_path(@resume), class: 'button small radius', remote: true %>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <%= render 'shared/resume_panel', objs: @references, title: "References" %>
+      <%= link_to "<i class=\"fi-plus\"></i>Add Reference".html_safe, new_resume_reference_path(@resume), class: 'button small radius', remote: true %>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <%= render 'shared/resume_panel', objs: @customs, title: "Custom" %>
+      <%= link_to "<i class=\"fi-plus\"></i>Add Custom".html_safe, new_resume_custom_path(@resume), class: 'button small radius', remote: true %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="medium-4 columns">
+    <div class="panel">
+      <%= render 'shared/resume_panel', objs: @snippets, title: "Code Snippets" %>
+      <%= link_to "<i class=\"fi-plus\"></i>Add Snippet".html_safe, new_resume_snippet_path(@resume), class: 'button small radius', remote: true %>
+    </div>
+  </div>
+</div>

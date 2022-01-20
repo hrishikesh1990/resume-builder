@@ -1,0 +1,18 @@
+<%= render 'shared/title', title: "Resume Builder" %>
+<%= render 'layouts/messages' %>
+<div class="row">
+  <div class="medium-8 columns">
+    <p>Welcome to Rails Resume, an easy apllication that you can use to build a professional single web page resume.  Rails resume is built using the Ruby on Rails framework.  Take a look at some of the recent resumes that have been published.</p>
+    <% if @resumes.any? %>
+      <h3>Recent Resumes</h3>
+      <%= render @resumes[0..4] %>
+    <% end %>
+  </div>
+  <% unless logged_in? %>
+    <div class="medium-4 columns panel">
+      <h3>Create a Resume</h3>
+      <%= link_to "Sign Up", register_path, class: 'small button radius' %>
+      <p>Already Signed Up? - <%= link_to 'Login', login_path %></p>
+    </div>
+  <% end %>
+</div>

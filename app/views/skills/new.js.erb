@@ -1,0 +1,4 @@
+$("#modal").html('<a class="close-reveal-modal">&#215;</a>');
+$("<%= escape_javascript(render 'form') %>").prependTo('#modal');
+$("<%= escape_javascript(render 'shared/title', title: "Add Skill") %>").prependTo('#modal');
+$('#modal').foundation('reveal', 'open');
